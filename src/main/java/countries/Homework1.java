@@ -81,12 +81,12 @@ public class Homework1 {
     /**
      * Prints the number of timezones for each country in the form {@code name:timezones}, in the ascending order of the number of timezones.
      */
-    public void streamPipeline8() {
+    public void streamPipeline8(List<Country> countries) {
         countries.stream()
-                .collect(HashMap::new, (map, value) -> map.put(value.getName(), value.getTimezones().size()), HashMap::putAll)
+                .sorted(Comparator.comparingInt(c -> c.getTimezones().size()))
+                .collect(LinkedHashMap::new, (map, value) -> map.put(value.getName(), value.getTimezones().size()), HashMap::putAll)
                 .forEach((country, value) -> {
-                    System.out.println(country + ":" + value);
-                });
+                    System.out.println(country + ":" + value);});
     }
 
     /**
