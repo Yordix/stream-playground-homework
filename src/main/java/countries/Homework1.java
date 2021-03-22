@@ -85,7 +85,7 @@ public class Homework1 {
     public void streamPipeline8(List<Country> countries) {
         countries.stream()
                 .sorted(Comparator.comparingInt(c -> c.getTimezones().size()))
-                .collect(LinkedHashMap::new, (map, value) -> map.put(value.getName(), value.getTimezones().size()), HashMap::putAll)
+                .collect(LinkedHashMap::new, (map, value) -> map.put(value.getName(), value.getTimezones().size()), LinkedHashMap::putAll)
                 .forEach((country, value) -> {
                     System.out.println(country + ":" + value);});
     }
